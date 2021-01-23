@@ -124,6 +124,8 @@ ffmpeg -i <input> -af "volume=xxxdB,volume=0.5" <output>
 
 以下是一些中文教程和文档，希望能对你的manim学习有所帮助：
 
+https://manim.ml/
+
 ### 中文安装指南
 - [一视数学卷毛杨的专栏教程](https://www.bilibili.com/read/cv4139851)
 - [一视数学卷毛杨的互动版视频教程](https://www.bilibili.com/video/BV1ap4y1C7NF)
