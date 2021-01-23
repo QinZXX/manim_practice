@@ -3,7 +3,7 @@ from manim import *
 
 class SumOfSquares(Scene):
     def construct(self):
-        zh = Text("×ÔÈ»ÊıÆ½·½ºÍ¹«Ê½µÄÖ¤Ã÷",gradient=(BLUE, GREEN))
+        zh = Text("è‡ªç„¶æ•°å¹³æ–¹å’Œå…¬å¼çš„è¯æ˜",gradient=(BLUE, GREEN))
         self.play(Write(zh))
         self.wait(2.5)
 
@@ -21,7 +21,7 @@ class SumOfSquares(Scene):
             # ApplyMethod(framebox1.next_to,text[2],RIGHT)
             # ApplyMethod(framebox1.next_to,text[3],LEFT) # bad
         # )
-        zh2=Text("½áÂÛÊÇ£º",gradient=( GREEN,BLUE)).move_to(UP)
+        zh2=Text("ç»“è®ºæ˜¯ï¼š",gradient=( GREEN,BLUE)).move_to(UP)
         self.play(Write(zh2))
         res=MathTex(
             "1^2+2^2+3^2+...+n^2=\\frac{n(n+1)(2n+1)}{6}"
@@ -29,7 +29,7 @@ class SumOfSquares(Scene):
         self.play(Write(res))
         self.wait(2.5)
         self.play(FadeOut(zh2),FadeOut(res))
-        zh3=Text("Ò»ÖÖ¼òµ¥µÄÖ¤Ã÷·½·¨ÊÇÀûÓÃÁ¢·½²îÀ´ÏûÈ¥Ç°ºóÏî",gradient=(BLUE, GREEN))
+        zh3=Text("ä¸€ç§ç®€å•çš„è¯æ˜æ–¹æ³•æ˜¯åˆ©ç”¨ç«‹æ–¹å·®æ¥æ¶ˆå»å‰åé¡¹",gradient=(BLUE, GREEN))
         self.play(Write(zh3))
         self.wait(3)
 
@@ -52,8 +52,8 @@ class SumOfSquares(Scene):
                     ApplyMethod(text2.move_to,UP*2),ApplyMethod(text3.move_to, UP),
                     ApplyMethod(framebox1.shift, UP)
                     )
-        zh4 = Text('×¢Òâµ½nµÄÆ½·½Ïî ',gradient=(BLUE, GREEN)).next_to(framebox1, DOWN) # ÖĞ
-        zh5= Text("ÔÚµÈÊ½Á½±ßÍ¬Ê±¶Ôn´Ó1µ½nÈ¡Öµ²¢ÇóºÍ",gradient=(BLUE, GREEN)).next_to(zh4,DOWN)
+        zh4 = Text('æ³¨æ„åˆ°nçš„å¹³æ–¹é¡¹ ',gradient=(BLUE, GREEN)).next_to(framebox1, DOWN) # ä¸­
+        zh5= Text("åœ¨ç­‰å¼ä¸¤è¾¹åŒæ—¶å¯¹nä»1åˆ°nå–å€¼å¹¶æ±‚å’Œ",gradient=(BLUE, GREEN)).next_to(zh4,DOWN)
         self.play(Write(zh4))
         self.play(Write(zh5))
         self.wait(3)
@@ -68,8 +68,8 @@ class SumOfSquares(Scene):
         self.play(ApplyMethod(zh6.shift,UP))
         self.play(Write(zh7))
         self.wait(2.5)
-        zh8=Text("½ÓÏÂÀ´Ö»Òª¼ÆËã×ó±ß½á¹û¼´¿É",gradient=(BLUE, GREEN)).shift(DOWN)
-        zh9 = Text("¶ø×ó±ßÏàÁÚÏîÕıºÃ¿ÉÒÔµÖÏû",gradient=(BLUE, GREEN)).next_to(zh8,DOWN)
+        zh8=Text("æ¥ä¸‹æ¥åªè¦è®¡ç®—å·¦è¾¹ç»“æœå³å¯",gradient=(BLUE, GREEN)).shift(DOWN)
+        zh9 = Text("è€Œå·¦è¾¹ç›¸é‚»é¡¹æ­£å¥½å¯ä»¥æŠµæ¶ˆ",gradient=(BLUE, GREEN)).next_to(zh8,DOWN)
         self.play(Write(zh8))
         self.play(Write(zh9))
         self.wait(2)
@@ -94,7 +94,7 @@ class SumOfSquares(Scene):
 
         self.wait(2)
 
-        zh14=Text("ÒÆÏî´¦Àíºó£¬¿ÉµÃ½áÂÛ£º",gradient=(BLUE, GREEN)).next_to(zh13,DOWN)
+        zh14=Text("ç§»é¡¹å¤„ç†åï¼Œå¯å¾—ç»“è®ºï¼š",gradient=(BLUE, GREEN)).next_to(zh13,DOWN)
         zh15=MathTex("S=\\frac{n(n+1)(2n+1)}{6}").next_to(zh14,DOWN)
         zh16=MathTex("1^2+2^2+3^2+...+n^2=\\frac{n(n+1)(2n+1)}{6}")
         self.play(Write(zh14))
