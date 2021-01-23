@@ -27,6 +27,92 @@ manim ./sum_of_squares -a -p -ql
 -a表示生成代码中所有的类项。
 ```
 
+### 其他处理
+
+#### 合并音频和视频
+
+（此时需要**将mp3文件放在前面，MP4文件放在后面**）否则会没有背景音乐
+
+```bash
+ffmpeg -i .\music\Tassel.mp3 -i .\media\videos\sum_of_squares\480p15\SumOfSquares.mp4 -t 1:45 -y videos\SumOfSquares.mp4
+```
+
+-t 后面跟时长 
+
+-y 表示覆盖 
+
+### 调整音频音量
+
+衡量一个音频音量的常用单位是分贝（db），对音频音量处理相关的操作都是基于分贝而来。
+
+#### 查看音频分贝
+
+```bash
+ffmpeg -i .\music\Tassel.mp3 -filter_complex volumedetect -c:v copy -f null asd.mp4
+
+[Parsed_volumedetect_0 @ 000002c7f1652540] n_samples: 23821150
+[Parsed_volumedetect_0 @ 000002c7f1652540] mean_volume: -13.5 dB
+[Parsed_volumedetect_0 @ 000002c7f1652540] max_volume: 0.0 dB
+[Parsed_volumedetect_0 @ 000002c7f1652540] histogram_0db: 16907
+[Parsed_volumedetect_0 @ 000002c7f1652540] histogram_1db: 36407
+```
+
+可以看到最高为0.0db，平均为-13.5db。
+
+#### 1、基于当前音量倍数处理
+
+命令如下，是以当前音量的0.5倍变更输出一个音频，即音量降低了一半；
+
+```bash
+ffmpeg  -i .\music\Tassel.mp3 -filter："volume=0.5" output.mp3
+```
+
+下面这个是将当前音量提升一倍的处理，这种处理相对粗暴，在表现形式上也是直接对音频波的高度进行的处理，可能会使音频出现失真的现象。
+
+```bash
+ffmpeg  -i input.mp3 -filter："volume=2" output.mp3 
+```
+
+#### 2、基于分贝数值的处理
+
+上面的基于倍数的处理可能会导致音频的失真，这个基于分贝数值的处理则相对会保留音频的原声效果，如下：
+
+音量提升5分贝（db）；
+
+```bash
+ffmpeg  -i input.mp3 -filter：“volume=5dB” output.mp3 
+```
+
+音量降低5分贝（db）。
+
+```bash
+ffmpeg  -i input.mp3 -filter：“volume=-5dB” output.mp3 
+```
+
+#### 3、音量的标准化
+
+除了上面对音量的整体处理，如降低分贝值或者成倍增加音量，ffmpeg还有对音量标准化的处理功能，即削峰填谷，使整个音频的音量变化跨度降低，变得平滑，可能会听起来更舒服点吧。
+
+```bash
+ffmepg -i input.mp3 -filter:a "loudnorm" output.mp3 
+```
+
+#### 4、其他
+
+```bash
+ffmpeg -i <input> -af "volume=xxxdB" <output> 
+```
+
+将音量设置到50％：
+
+```bash
+ffmpeg -i <input> -af "volume=0.5" <output> 
+```
+
+```bash
+ffmpeg -i <input> -af "volume=xxxdB,volume=0.5" <output>
+```
+
 ## 一些视频链接如下：
 
 #### 近期视频链接：
